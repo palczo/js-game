@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+
+.choices {
+display: flex;
+}
+
+.choices > div {
+	flex: 1;
+}
+
+img {
+	height: 100px;
+}
