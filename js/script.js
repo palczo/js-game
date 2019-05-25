@@ -24,15 +24,26 @@ function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  result_p.innerHTML = `${convertToWord(userChoice)} pobija ${convertToWord(computerChoice)}. Wygrywasz!`;
+  const smallUserWord = "user".fontsize(3).sub();
+  const smallCompWord = "comp".fontsize(3).sub();
+  result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} wygrywa z ${convertToWord(computerChoice)}${smallCompWord}. Wygrywasz!`;
 }
 
-function lose() {
-  console.log("PRZEGRAŁEŚ")
+function lose(userChoice, computerChoice) {
+  computerScore++;
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  const smallUserWord = "user".fontsize(3).sub();
+  const smallCompWord = "comp".fontsize(3).sub();
+  result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} przegrywa z ${convertToWord(computerChoice)}${smallCompWord}. Przegrywasz!`;
 }
 
-function draw() {
-  console.log("REMIS")
+function draw(userChoice, computerChoice) {
+  userScore_span.innerHTML = userScore;
+  computerScore_span.innerHTML = computerScore;
+  const smallUserWord = "user".fontsize(3).sub();
+  const smallCompWord = "comp".fontsize(3).sub();
+  result_p.innerHTML = `${convertToWord(userChoice)}${smallUserWord} remisuje z ${convertToWord(computerChoice)}${smallCompWord}. Remis!`;
 }
 
 function game(userChoice) {
