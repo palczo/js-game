@@ -4,9 +4,9 @@ const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("user-score");
 const scoreBoard_div = document.querySelector(".score-board");
 const result_p = document.querySelector(".result > p");
-const rock_div = document.getElementById("kamień");
-const paper_div = document.getElementById("papier");
-const scissors_div = document.getElementById("nożyce");
+const rock_div = document.getElementById("k");
+const paper_div = document.getElementById("p");
+const scissors_div = document.getElementById("n");
 
 function getComputerChoice() {
   const choices = ['kamień', 'papier', 'nożyce'];
@@ -14,11 +14,17 @@ function getComputerChoice() {
   return choices [randomNumber];
 }
 
+function convertToWord(letter) {
+  if (letter === "k") return "kamień";
+  if (letter === "p") return "papier";
+  return "nożyce"
+}
+
 function win(userChoice, computerChoice) {
   userScore++;
   userScore_span.innerHTML = userScore;
   computerScore_span.innerHTML = computerScore;
-  result_p.innerHTML = userChoice + " pobija " + computerChoice + ". Wygrywasz!";
+  result_p.innerHTML = `${convertToWord(userChoice)} pobija ${convertToWord(computerChoice)}. Wygrywasz!`;
 }
 
 function lose() {
@@ -32,19 +38,19 @@ function draw() {
 function game(userChoice) {
   const computerChoice = getComputerChoice();
   switch (userChoice + computerChoice) {
-  	case "kamień nożyce":
-  	case "papier kamień":
-  	case "nożyce papier":
+  	case "kn":
+  	case "pk":
+  	case "np":
   	win(userChoice, computerChoice);
   	break;
-  	case "kamień papier":
-  	case "papier nożyce":
-  	case "nożyce kamień":
+  	case "kp":
+  	case "pn":
+  	case "nk":
   	lose(userChoice, computerChoice);
   	break;
-  	case "kamień kamień":
-  	case "papier papier":
-  	case "nożyce nożyce":
+  	case "kk":
+  	case "pp":
+  	case "nn":
   	draw(userChoice, computerChoice);
   }
 }
